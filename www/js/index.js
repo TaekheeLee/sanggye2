@@ -174,8 +174,8 @@ var app = {
 	takeKeyPic : function(){
 		console.log('takeKeyPic');
 		try{
-		console.log('Camera.DestinationType.DATA_URL:'+Camera.DestinationType.DATA_URL);
-		console.log('Camera.EncodingType.JPEG:'+Camera.EncodingType.JPEG);
+		console.log('Camera.DestinationType.DATA_URL:'+navigator.camera.DestinationType.DATA_URL);
+		console.log('Camera.EncodingType.JPEG:'+navigator.camera.EncodingType.JPEG);
 		}catch(e){
 			console.log(e);
 		}
