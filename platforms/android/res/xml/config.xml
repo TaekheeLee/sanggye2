@@ -17,7 +17,7 @@
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
-    <name>HelloCordova</name>
+    <name>상계주차</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
