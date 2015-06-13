@@ -130,7 +130,10 @@ var app = {
 				telno : $("#telno").val(),
 				telno2: $("#telno2").val(),
 				type  : $("#type").val(),
-				memo  : $("#memo").val()
+				memo  : $("#memo").val(),
+				key  : $("#key").val(),
+				car  : $("#car").val(),
+				thumbnail  : $("#thumbnail").val()
 			});
 			
 			Park.saveAsDraft()
@@ -147,6 +150,65 @@ var app = {
 			console.log(e);
 		}
 		
+	},
+	
+	takeCarPic : function(){
+		navigator.camera.getPicture(app.onSuccessCar, app.onFailCar, { 
+			quality: 70, 
+			destinationType: Camera.DestinationType.DATA_URL,
+			targetWidth: 400,
+			targetHeight: 300,
+    		encodingType: Camera.EncodingType.JPEG,
+    		saveToPhotoAlbum: false });
+	},
+	
+	onSuccessCar : function(imageData){
+		$('#regCarImg').attr("src","data:image/jpeg;base64," + imageData);
+		$('#car').val(imageData);
+	},
+	
+	onFailCar : function(message){
+		alert('message');
+	},
+	
+	takeKeyPic : function(){
+		navigator.camera.getPicture(app.onSuccessKey, app.onFailKey, { 
+			quality: 70, 
+			destinationType: Camera.DestinationType.DATA_URL,
+			targetWidth: 400,
+			targetHeight: 300,
+    		encodingType: Camera.EncodingType.JPEG,
+    		saveToPhotoAlbum: false });
+	},
+	
+	onSuccessKey : function(imageData){
+		$('#key').val(imageData);
+		
+		var image = document.getElementById("regKeyImg");
+		image.src = "data:image/jpeg;base64," + imageData;
+		
+		app.thumbnail(image);
+	},
+	
+	onFailKey : function(message){
+		alert('message');
+	},
+	
+	thumbnail : function (image) {
+		var mainCanvas = document.createElement("canvas");
+		var img = new Image();
+		img.src = image.src;
+		img.onload = function(){
+			mainCanvas.width = 80;
+        	mainCanvas.height = 80;
+        	var ctx = mainCanvas.getContext("2d");
+        	
+        	ctx.drawImage(img, 0, 0, mainCanvas.width, mainCanvas.height);
+            var dataURL = mainCanvas.toDataURL();
+            dataURL = dataURL.replace(/^data:image\/[^;]+;base64,/, "");
+        
+	        $('#thumbnail').val(dataURL);
+		};
 	}
 };
 
