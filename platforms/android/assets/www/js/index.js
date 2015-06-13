@@ -29,7 +29,6 @@ var app = {
 	// 'load', 'deviceready', 'offline', and 'online'.
 	bindEvents : function() {
 		this.onDeviceReady();
-
 	},
 	// deviceready Event Handler
 	//
@@ -151,5 +150,5 @@ var app = {
 	}
 };
 
-app.initialize();
+ app.initialize();
 
