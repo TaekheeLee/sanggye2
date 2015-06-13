@@ -173,8 +173,12 @@ var app = {
 	
 	takeKeyPic : function(){
 		console.log('takeKeyPic');
+		try{
 		console.log('Camera.DestinationType.DATA_URL:'+Camera.DestinationType.DATA_URL);
 		console.log('Camera.EncodingType.JPEG:'+Camera.EncodingType.JPEG);
+		}catch(e){
+			console.log(e);
+		}
 		navigator.camera.getPicture(app.onSuccessKey, app.onFailKey, { 
 			quality: 70, 
 			destinationType: Camera.DestinationType.DATA_URL,
